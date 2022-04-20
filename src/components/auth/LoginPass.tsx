@@ -31,7 +31,7 @@ const LoginPass = () => {
           Email / Phone number
         </label>
 
-        <input type="text" className="form-control" id="account"
+        <input type="text" className="form-control border border-secondary border-2" id="account"
         name="account" value={account} onChange={handleChangeInput} />
       </div>
 
@@ -40,7 +40,7 @@ const LoginPass = () => {
 
         <div className="pass">
           <input type={typePass ? "text" : "password"} 
-          className="form-control" 
+          className="form-control border border-secondary border-2" 
           id="password"
           name="password" value={password} 
           onChange={handleChangeInput} 

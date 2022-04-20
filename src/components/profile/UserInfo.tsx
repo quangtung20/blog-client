@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { updateUser } from '../../redux/actions/profileAction'
 
-import { RootStore, InputChange, IUserProfile } from '../../utils/TypeScript'
+import { RootStore, InputChange, IUserProfile, FormSubmit } from '../../utils/TypeScript'
 
 import NotFound from '../global/NotFound'
 
@@ -16,6 +17,12 @@ const UserInfo = () => {
   const [user, setUser] = useState<IUserProfile>(initState)
   const [typePass, setTypePass] = useState(false)
   const [typeCfPass, setTypeCfPass] = useState(false)
+
+  const handleSubmit = (e: FormSubmit) => {
+    e.preventDefault()
+    if(avatar || name)
+      dispatch(updateUser((avatar as File), name, auth))
+  }
 
   const handleChangeInput = (e: InputChange) => {
     const { name, value } = e.target
@@ -36,7 +43,7 @@ const UserInfo = () => {
 
   if(!auth.user) return <NotFound />
   return (
-    <form className="profile_info">
+    <form className="profile_info" onSubmit={handleSubmit}>
       <div className="info_avatar">
         <img src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar} 
         alt="avatar" 
@@ -44,7 +51,7 @@ const UserInfo = () => {
 
         <span>
           <i className="fas fa-camera" />
-          <p>Change</p>
+          <p className="fw-bold">Change</p>
           <input type="file" accept="image/*"
           name="file" id="file_up" 
           onChange={handleChangeFile} />
@@ -53,14 +60,14 @@ const UserInfo = () => {
 
       <div className="form-group my-3">
         <label htmlFor="name">Name</label>
-        <input type="text" className="form-control" id="name"
+        <input type="text" className="form-control border border-secondary border-2" id="name"
         name="name" defaultValue={auth.user.name}
         onChange={handleChangeInput} />
       </div>
 
       <div className="form-group my-3">
         <label htmlFor="account">Account</label>
-        <input type="text" className="form-control" id="account"
+        <input type="text" className="form-control border border-secondary border-2" id="account"
         name="account" defaultValue={auth.user.account}
         onChange={handleChangeInput} disabled={true} />
       </div>
@@ -70,7 +77,7 @@ const UserInfo = () => {
 
         <div className="pass">
           <input type={typePass ? "text" : "password"} 
-          className="form-control" id="password"
+          className="form-control border border-secondary border-2" id="password"
           name="password" value={password}
           onChange={handleChangeInput} />
 
@@ -85,7 +92,7 @@ const UserInfo = () => {
 
         <div className="pass">
           <input type={typeCfPass ? "text" : "password"} 
-          className="form-control" id="cf_password"
+          className="form-control border border-secondary border-2" id="cf_password"
           name="cf_password" value={cf_password}
           onChange={handleChangeInput} />
 

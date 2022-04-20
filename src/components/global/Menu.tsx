@@ -39,7 +39,7 @@ const Menu = () => {
       {
         auth.user &&
         <li className="nav-item dropdown">
-          <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span className="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src={auth.user.avatar} alt="avatar" className="avatar" />
           </span>
 

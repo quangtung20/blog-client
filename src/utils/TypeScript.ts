@@ -34,7 +34,7 @@ export interface IUser extends IUserLogin {
 }
 
 export interface IUserProfile extends IUserRegister {
-  avatar: string | File
+  avatar: string | File | Blob
 }
 
 

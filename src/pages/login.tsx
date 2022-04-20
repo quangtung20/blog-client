@@ -43,8 +43,8 @@ const Login = () => {
             Register Now
           </Link>
         </p>
-        <p className="text-center">
-          Or login with:
+        <p className="text-center fw-bold">
+          Or Login With:
         </p>
         <SocialLogin />
       </div>

@@ -33,7 +33,7 @@ const RegisterForm = () => {
       <div className="form-group mb-3">
         <label htmlFor="name" className="form-label">Name</label>
 
-        <input type="text" className="form-control" id="name"
+        <input type="text" className="form-control border border-secondary border-2" id="name"
         name="name" value={name} onChange={handleChangeInput}
         placeholder="Your name is up to 20 chars." />
       </div>
@@ -43,7 +43,7 @@ const RegisterForm = () => {
           Email / Phone number
         </label>
 
-        <input type="text" className="form-control" id="account"
+        <input type="text" className="form-control border border-secondary border-2" id="account"
         name="account" value={account} onChange={handleChangeInput}
         placeholder="Example@gmail.com/+84374481936" />
       </div>
@@ -53,7 +53,7 @@ const RegisterForm = () => {
 
         <div className="pass">
           <input type={typePass ? "text" : "password"} 
-          className="form-control" 
+          className="form-control border border-secondary border-2" 
           id="password"
           name="password" value={password} 
           onChange={handleChangeInput} 
@@ -73,7 +73,7 @@ const RegisterForm = () => {
 
         <div className="pass">
           <input type={typeCfPass ? "text" : "password"} 
-          className="form-control" 
+          className="form-control border border-secondary border-2" 
           id="cf_password"
           name="cf_password" value={cf_password} 
           onChange={handleChangeInput} 

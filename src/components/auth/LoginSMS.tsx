@@ -18,7 +18,7 @@ const LoginSMS = () => {
       <div className="form-group mb-3">
         <label htmlFor="phone" className="form-label">Phone number</label>
 
-        <input type="text" className="form-control" id="phone"
+        <input type="text" className="form-control border border-secondary border-2" id="phone"
         value={phone} onChange={e => setPhone(e.target.value)}
         placeholder="+84374481936" />
       </div>
