@@ -16,10 +16,9 @@ export const validRegister = (userRegister: IUserRegister) => {
     errors.push("Email or phone number format is incorrect.")
   }
 
-  if(password.length < 6){
-    errors.push("Password must be at least 6 chars.")
-  }else if(password !== cf_password){
-    errors.push("Confirm password did not match.")
+  const msg = checkPassword(password,cf_password)
+  if(msg){
+    errors.push(msg)
   }
 
   return {
@@ -27,6 +26,16 @@ export const validRegister = (userRegister: IUserRegister) => {
     errLength: errors.length
   }
 }
+
+export const checkPassword = (password: string, cf_password: string) => {
+  if(password.length < 6){
+    return ("Password must be at least 6 chars.")
+  }else if(password !== cf_password){
+    return ("Confirm password did not match.")
+  }
+}
+
+
 
 export function validPhone(phone: string) {
   const re = /^[+]/g
