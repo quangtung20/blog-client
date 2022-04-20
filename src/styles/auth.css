@@ -7,11 +7,12 @@
 }
 
 .auth_page .auth_box{
-  background: #fff;
+  background: #f8f9fa;
   max-width: 400px;
   width: 100%;
-  border: 1px solid #ddd;
   padding: 2.7rem 1.7rem;
+  border-radius: 10px;
+  border: solid 3px rgb(176, 176, 176);
 }
 
 .auth_page .pass{
