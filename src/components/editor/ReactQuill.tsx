@@ -33,7 +33,7 @@ const Quill: React.FC<IProps> = ({setBody}) => {
       const file = files[0]
       const check = checkImage(file)
       if(check) return dispatch({ type: ALERT, payload: { errors: check } });
-
+      
       dispatch({ type: ALERT, payload: { loading: true } })
       const photo = await imageUpload(file)
 
@@ -58,11 +58,13 @@ const Quill: React.FC<IProps> = ({setBody}) => {
 
   return (
     <div>
-      <ReactQuill theme="snow"
-      modules={modules}
-      placeholder="Write somethings..."
-      onChange={e => setBody(e)}
-      ref={quillRef} />
+      <ReactQuill
+        theme="snow"
+        modules={modules}
+        placeholder="Write somethings..."
+        onChange={e => setBody(e)}
+        ref={quillRef} 
+      />
     </div>
   )
 }

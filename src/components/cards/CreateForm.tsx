@@ -29,7 +29,7 @@ const CreateForm: React.FC<IProps> = ({blog, setBlog}) => {
   return (
     <form>
       <div className="form-group position-relative">
-        <input type="text" className="form-control"
+        <input type="text" className="form-control border-2 border-secondary"
         value={blog.title} name="title" 
         onChange={handleChangeInput} />
 
@@ -40,12 +40,12 @@ const CreateForm: React.FC<IProps> = ({blog, setBlog}) => {
       </div>
 
       <div className="form-group my-3">
-        <input type="file" className="form-control"
+        <input type="file" className="form-control border-2 border-secondary"
         accept="image/*" onChange={handleChangeThumbnail} />
       </div>
 
       <div className="form-group position-relative">
-        <textarea className="form-control" rows={4}
+        <textarea className="form-control border-2 border-secondary" rows={4}
         value={blog.description} style={{resize: 'none'}}
         name="description" onChange={handleChangeInput} />
 
@@ -56,7 +56,7 @@ const CreateForm: React.FC<IProps> = ({blog, setBlog}) => {
       </div>
 
       <div className="form-group my-3">
-        <select className="form-control text-capitalize"
+        <select className="form-control border-2 border-secondary text-capitalize"
         value={blog.category} name="category"
         onChange={handleChangeInput}>
           <option value="">Choose a category</option>

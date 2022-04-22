@@ -15,38 +15,34 @@ const Login = () => {
   const { auth } = useSelector((state: RootStore) => state)
 
   useEffect(() => {
-    if(auth.access_token) history.push('/')
+    if(auth.access_token) {
+      let url = history.location.search.replace('?', '/')
+      return history.push(url)
+    }
   },[auth.access_token, history])
 
   return (
     <div className="auth_page">
       <div className="auth_box">
         <h3 className="text-uppercase text-center mb-4">Login</h3>
-
         { sms ? <LoginSMS/> : <LoginPass /> }
 
-        <small className="row my-2 text-primary" style={{cursor: 'pointer'}}>
+        <small className="row my-2 text-primary fw-bold" style={{cursor: 'pointer'}}>
           <span className="col-6">
             <Link to='/forgot_password'>
               Forgot password?
             </Link>
           </span>
-
-          <span className="col-6 text-end" onClick={() => setSms(!sms)}>
-            { sms ? 'Sign in with password' : 'Sign in with SMS' }
-          </span>
         </small>
 
-        <p>
-          {`You don't have an account? `}
-          <Link to={`/register`} style={{color: 'crimson'}}>
+        <p className="fw-bold text-center">Or Login With</p>
+        <SocialLogin />
+        <p className="mt-4">
+          {`If you don't have an account? `}
+          <Link to={`/register${history.location.search}`} style={{color: 'crimson'}} className="fw-bold">
             Register Now
           </Link>
         </p>
-        <p className="text-center fw-bold">
-          Or Login With:
-        </p>
-        <SocialLogin />
       </div>
     </div>
   )

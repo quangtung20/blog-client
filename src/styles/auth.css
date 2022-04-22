@@ -1,4 +1,4 @@
-.auth_page{
+.auth_page {
   width: 100%;
   padding: 2.5rem 0;
   background: #fdfdfd;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.auth_page .auth_box{
+.auth_page .auth_box {
   background: #f8f9fa;
   max-width: 400px;
   width: 100%;
@@ -15,10 +15,11 @@
   border: solid 3px rgb(176, 176, 176);
 }
 
-.auth_page .pass{
+.auth_page .pass {
   position: relative;
 }
-.auth_page .pass small{
+
+.auth_page .pass small {
   position: absolute;
   top: 50%;
   right: 5px;
@@ -27,14 +28,15 @@
   opacity: 0.5;
 }
 
-.auth_page input::placeholder{
+.auth_page input::placeholder {
   opacity: 0.5;
   font-size: 80%;
 }
 
-.auth_page a{
+.auth_page a {
   text-decoration: none;
 }
-.auth_page a:hover{
+
+.auth_page a:hover {
   text-decoration: underline;
 }

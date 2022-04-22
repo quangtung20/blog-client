@@ -31,18 +31,18 @@ const Menu = () => {
       {
         navLinks.map((link, index) => (
           <li key={index} className={`nav-item ${isActive(link.path)}`}>
-            <Link className="nav-link" to={link.path}>{link.label}</Link>
+            <Link className="nav-link fw-bold" to={link.path}>{link.label}</Link>
           </li>
         ))
       }
-            
+
       {
         auth.user?.role === 'admin' &&
         <li className={`nav-item ${isActive("/category")}`}>
-          <Link to="/category" className="nav-link">Category</Link>
+          <Link to="/category" className="nav-link fw-bold">Category</Link>
         </li>
       }
-
+      
       {
         auth.user &&
         <li className="nav-item dropdown">
@@ -52,7 +52,7 @@ const Menu = () => {
 
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
-              <Link className="dropdown-item" 
+              <Link className="dropdown-item dropdown-menu-right" 
               to={`/profile/${auth.user._id}`}
               >
                 Profile

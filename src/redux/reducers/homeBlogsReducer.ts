@@ -19,4 +19,4 @@ const homeBlogsReducer = (
 }
 
 
-export default homeBlogsReducer 
+export default homeBlogsReducer

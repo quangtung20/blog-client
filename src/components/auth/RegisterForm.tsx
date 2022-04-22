@@ -33,7 +33,7 @@ const RegisterForm = () => {
       <div className="form-group mb-3">
         <label htmlFor="name" className="form-label">Name</label>
 
-        <input type="text" className="form-control border border-secondary border-2" id="name"
+        <input type="text" className="form-control border-2 border-secondary" id="name"
         name="name" value={name} onChange={handleChangeInput}
         placeholder="Your name is up to 20 chars." />
       </div>
@@ -43,7 +43,7 @@ const RegisterForm = () => {
           Email / Phone number
         </label>
 
-        <input type="text" className="form-control border border-secondary border-2" id="account"
+        <input type="text" className="form-control border-2 border-secondary" id="account"
         name="account" value={account} onChange={handleChangeInput}
         placeholder="Example@gmail.com/+84374481936" />
       </div>
@@ -53,15 +53,16 @@ const RegisterForm = () => {
 
         <div className="pass">
           <input type={typePass ? "text" : "password"} 
-          className="form-control border border-secondary border-2" 
+          className="form-control border-2 border-secondary" 
           id="password"
           name="password" value={password} 
           onChange={handleChangeInput} 
           placeholder="Password must be at least 6 chars."
           />
 
-          <small onClick={() => setTypePass(!typePass)}>
-            {typePass ? 'Hide' : 'Show'}
+          {/* {typePass ? (<i className="bi bi-eye-fill"></i>):(<i className="bi bi-eye-fill"></i>)} */}
+          <small onClick={() => setTypePass(!typePass)} className="mx-1">
+            {typePass ? (<i className="fs-6 bi bi-eye-slash-fill"/>) : (<i className="bi bi-eye-fill fs-6"/>)}
           </small>
         </div>
       </div>
@@ -73,15 +74,15 @@ const RegisterForm = () => {
 
         <div className="pass">
           <input type={typeCfPass ? "text" : "password"} 
-          className="form-control border border-secondary border-2" 
+          className="form-control border-2 border-secondary" 
           id="cf_password"
           name="cf_password" value={cf_password} 
           onChange={handleChangeInput} 
           placeholder="Your confirm password."
           />
 
-          <small onClick={() => setTypeCfPass(!typeCfPass)}>
-            {typeCfPass ? 'Hide' : 'Show'}
+          <small onClick={() => setTypeCfPass(!typeCfPass)} className="mx-1">
+            {typeCfPass ? (<i className="fs-6 bi bi-eye-slash-fill"/>) : (<i className="bi bi-eye-fill fs-6"/>)}
           </small>
         </div>
       </div>

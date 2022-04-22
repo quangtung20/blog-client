@@ -1,4 +1,4 @@
-import { IBlog, IUserRegister } from './TypeScript'
+import { IUserRegister, IBlog } from './TypeScript'
 
 export const validRegister = (userRegister: IUserRegister) => {
   const { name, account, password, cf_password } = userRegister;
@@ -16,16 +16,15 @@ export const validRegister = (userRegister: IUserRegister) => {
     errors.push("Email or phone number format is incorrect.")
   }
 
-  const msg = checkPassword(password,cf_password)
-  if(msg){
-    errors.push(msg)
-  }
+  const msg = checkPassword(password, cf_password)
+  if(msg) errors.push(msg)
 
   return {
     errMsg: errors,
     errLength: errors.length
   }
 }
+
 
 export const checkPassword = (password: string, cf_password: string) => {
   if(password.length < 6){
@@ -34,8 +33,6 @@ export const checkPassword = (password: string, cf_password: string) => {
     return ("Confirm password did not match.")
   }
 }
-
-
 
 export function validPhone(phone: string) {
   const re = /^[+]/g
@@ -47,6 +44,8 @@ export function validateEmail(email: string) {
   return re.test(String(email).toLowerCase());
 }
 
+
+// Valid Blog
 export const validCreateBlog = ({
   title, content, description, thumbnail, category
 }: IBlog) => {
@@ -80,4 +79,5 @@ export const validCreateBlog = ({
     errMsg: err,
     errLength: err.length
   }
+
 }

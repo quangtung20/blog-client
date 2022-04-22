@@ -1,7 +1,11 @@
 import { ChangeEvent, FormEvent } from 'react'
 import rootReducer from '../redux/reducers/index'
 
-export type InputChange = ChangeEvent<HTMLInputElement| HTMLInputElement | HTMLTextAreaElement|HTMLSelectElement>
+export type InputChange = ChangeEvent<
+  | HTMLInputElement 
+  | HTMLTextAreaElement 
+  | HTMLSelectElement
+>
 
 export type FormSubmit = FormEvent<HTMLFormElement>
 
@@ -54,12 +58,24 @@ export interface ICategory {
 }
 
 export interface IBlog {
-  _id?:string
-  user:string | IUser
-  title:string
-  content:string
-  description:string
-  thumbnail:string | File
+  _id?: string
+  user: string | IUser
+  title: string
+  content: string
+  description: string
+  thumbnail: string | File
   category: string
+  createdAt: string
+}
+
+export interface IComment {
+  _id?: string
+  user: IUser
+  blog_id: string
+  blog_user_id: string
+  content: string
+  replyCM?: IComment[]
+  reply_user?: IUser
+  comment_root?: string
   createdAt: string
 }

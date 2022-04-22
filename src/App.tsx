@@ -23,17 +23,17 @@ const App = () => {
   },[dispatch])
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <Router>
         <Alert />
         <Header />
-
-        <Switch>
-          <Route exact path="/" component={PageRender} />
-          <Route exact path="/:page" component={PageRender} />
-          <Route exact path="/:page/:slug" component={PageRender} />
+        <div className="container">
+          <Switch>
+            <Route exact path="/" component={PageRender} />
+            <Route exact path="/:page" component={PageRender} />
+            <Route exact path="/:page/:slug" component={PageRender} />
         </Switch>
-
+        </div>
         <Footer/>
       </Router>
     </div>
@@ -41,3 +41,4 @@ const App = () => {
 }
 
 export default App
+

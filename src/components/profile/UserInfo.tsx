@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { resetPassword, updateUser } from '../../redux/actions/profileAction'
 
 import { RootStore, InputChange, IUserProfile, FormSubmit } from '../../utils/TypeScript'
 
 import NotFound from '../global/NotFound'
+
+import { updateUser, resetPassword } from '../../redux/actions/userAction'
 
 const UserInfo = () => {
   const initState = {
@@ -18,21 +19,12 @@ const UserInfo = () => {
   const [typePass, setTypePass] = useState(false)
   const [typeCfPass, setTypeCfPass] = useState(false)
 
-  const handleSubmit = (e: FormSubmit) => {
-    e.preventDefault()
-    if(avatar || name){
-      dispatch(updateUser((avatar as File), name, auth))
-    }
-
-    if(password && auth.access_token){
-      dispatch(resetPassword(password,cf_password,auth.access_token))
-    }
-  }
 
   const handleChangeInput = (e: InputChange) => {
     const { name, value } = e.target
     setUser({ ...user, [name]:value })
   }
+
 
   const handleChangeFile = (e: InputChange) => {
     const target = e.target as HTMLInputElement
@@ -43,6 +35,17 @@ const UserInfo = () => {
       setUser({...user, avatar: file})
     }
   } 
+
+
+  const handleSubmit = (e: FormSubmit) => {
+    e.preventDefault()
+    if(avatar || name)
+      dispatch(updateUser((avatar as File), name, auth))
+
+    if(password && auth.access_token)
+      dispatch(resetPassword(password, cf_password, auth.access_token))
+  }
+
 
   const { name, avatar, password, cf_password } = user
 
@@ -56,7 +59,7 @@ const UserInfo = () => {
 
         <span>
           <i className="fas fa-camera" />
-          <p className="fw-bold">Change</p>
+          <p>Change</p>
           <input type="file" accept="image/*"
           name="file" id="file_up" 
           onChange={handleChangeFile} />
@@ -65,14 +68,14 @@ const UserInfo = () => {
 
       <div className="form-group my-3">
         <label htmlFor="name">Name</label>
-        <input type="text" className="form-control border border-secondary border-2" id="name"
+        <input type="text" className="form-control border-2 border-secondary" id="name"
         name="name" defaultValue={auth.user.name}
         onChange={handleChangeInput} />
       </div>
 
       <div className="form-group my-3">
         <label htmlFor="account">Account</label>
-        <input type="text" className="form-control border border-secondary border-2" id="account"
+        <input type="text" className="form-control border-2 border-secondary" id="account"
         name="account" defaultValue={auth.user.account}
         onChange={handleChangeInput} disabled={true} />
       </div>
@@ -88,13 +91,11 @@ const UserInfo = () => {
         <label htmlFor="password">Password</label>
 
         <div className="pass">
-          <input 
-            type={typePass ? "text" : "password"} 
-            className="form-control border border-secondary border-2" id="password"
-            name="password" value={password}
-            onChange={handleChangeInput}
-            disabled={auth.user.type !== 'register'} 
-          />
+          <input type={typePass ? "text" : "password"} 
+          className="form-control border-2 border-secondary" id="password"
+          name="password" value={password}
+          onChange={handleChangeInput}
+          disabled={auth.user.type !== 'register'} />
 
           <small onClick={() => setTypePass(!typePass)}>
             { typePass ? 'Hide' : 'Show'}
@@ -106,13 +107,11 @@ const UserInfo = () => {
         <label htmlFor="cf_password">Confirm Password</label>
 
         <div className="pass">
-          <input 
-            type={typeCfPass ? "text" : "password"} 
-            className="form-control border border-secondary border-2" id="cf_password"
-            name="cf_password" value={cf_password}
-            onChange={handleChangeInput} 
-            disabled={auth.user.type !== 'register'} 
-          />
+          <input type={typeCfPass ? "text" : "password"} 
+          className="form-control border-2 border-secondary" id="cf_password"
+          name="cf_password" value={cf_password}
+          onChange={handleChangeInput} 
+          disabled={auth.user.type !== 'register'} />
 
           <small onClick={() => setTypeCfPass(!typeCfPass)}>
             { typeCfPass ? 'Hide' : 'Show'}

@@ -31,7 +31,7 @@ const LoginPass = () => {
           Email / Phone number
         </label>
 
-        <input type="text" className="form-control border border-secondary border-2" id="account"
+        <input type="text" className="form-control border-2 border-secondary" id="account"
         name="account" value={account} onChange={handleChangeInput} />
       </div>
 
@@ -40,14 +40,13 @@ const LoginPass = () => {
 
         <div className="pass">
           <input type={typePass ? "text" : "password"} 
-          className="form-control border border-secondary border-2" 
+          className=" form-control border-2 border-secondary" 
           id="password"
           name="password" value={password} 
           onChange={handleChangeInput} 
           />
-
-          <small onClick={() => setTypePass(!typePass)}>
-            {typePass ? 'Hide' : 'Show'}
+          <small onClick={() => setTypePass(!typePass)} className="mx-1">
+            {typePass ? (<i className="fs-6 bi bi-eye-slash-fill"/>) : (<i className="bi bi-eye-fill fs-6"/>)}
           </small>
         </div>
       </div>

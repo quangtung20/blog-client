@@ -25,7 +25,7 @@ const Home = () => {
                     { homeBlog.name } <small>({ homeBlog.count })</small>
                   </Link>
                 </h3>
-                <hr className="mt-1" />
+                <hr className="mt-1 mb-4 border border-2 border-dark " />
 
                 <div className="home_blogs">
                   {
@@ -34,14 +34,19 @@ const Home = () => {
                     ))
                   }
                 </div>
+
               </>
             }
 
             {
-              homeBlog.count > 4 && 
-              <Link className="text-end d-block mt-2 mb-3"
+              homeBlog.count > 2 && 
+              <Link className="text-end d-block mt-2 mb-3 
+              text-decoration-none"
               to={`/blogs/${homeBlog.name}`}>
-                Read more &gt;&gt;
+                <button className="btn btn-outline-secondary border border-secondary border-2">
+                  Read more
+                </button>
+
               </Link>
             }
           </div>
@@ -52,3 +57,5 @@ const Home = () => {
 }
 
 export default Home
+
+

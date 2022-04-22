@@ -6,7 +6,7 @@ const Search = () => {
 
   return (
     <div className="search w-100 position-relative me-4">
-      <input type="text" className="form-control border border-secondary border-2 me-2 w-100"
+      <input type="text" className="form-control border-2 border-secondary me-2 w-100"
       value={search} placeholder="Enter your search..."
       onChange={e => setSearch(e.target.value)}  />
     </div>
