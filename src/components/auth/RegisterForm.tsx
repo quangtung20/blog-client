@@ -40,7 +40,7 @@ const RegisterForm = () => {
 
       <div className="form-group mb-3">
         <label htmlFor="account" className="form-label">
-          Email / Phone number
+          Account
         </label>
 
         <input type="text" className="form-control border-2 border-secondary" id="account"

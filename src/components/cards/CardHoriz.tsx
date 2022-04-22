@@ -1,8 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+import { deleteBlog } from '../../redux/actions/blogAction'
 
-import { IBlog, RootStore } from '../../utils/TypeScript'
+import { IBlog, IParams, IUser, RootStore } from '../../utils/TypeScript'
 
 
 interface IProps {
@@ -10,10 +11,25 @@ interface IProps {
 }
 
 const CardHoriz: React.FC<IProps> = ({blog}) => {
-   const { auth } = useSelector((state: RootStore) => state)
+  const { auth } = useSelector((state: RootStore) => state)
+  const { slug } = useParams<IParams>()
+  const dispatch = useDispatch()
+
+  const handleDelete = () => {
+    if(!auth.user || !auth.access_token) return;
+
+    if(slug !== auth.user._id) return dispatch({
+      type: 'ALERT',
+      payload: { errors: 'Invalid Authentication.' }
+    })
+
+    if(window.confirm("Do you want to delete this post?")){
+      dispatch(deleteBlog(blog, auth.access_token))
+    }
+  }
    console.log(auth.user?.name)
   return (
-    <div className="card mb-3" style={{minWidth: "280px"}}>
+    <div className="card mb-3 border border-secondary border-2" style={{minWidth: "280px"}}>
       <div className="row g-0 p-2">
         <div className="col-md-4" style={{
           minHeight: '150px', overflow: 'hidden', borderRadius:'3px',
@@ -55,6 +71,18 @@ const CardHoriz: React.FC<IProps> = ({blog}) => {
                 <small className="text-primary text-capitalize fw-bold">
                   by:{auth.user?.name}
                 </small>
+
+                {
+                  (slug === auth.user?._id) &&
+                  <div style={{cursor: 'pointer'}}>
+                    <Link to={`/update_blog/${blog._id}`}>
+                      <i className="fas fa-edit" title="edit" />
+                    </Link>
+
+                    <i className="fas fa-trash text-danger mx-3" 
+                    title="edit" onClick={handleDelete} />
+                  </div>
+                }
 
                 <small className="text-muted fw-bold">
                   { new Date(blog.createdAt).toLocaleString().split(',')[1] }

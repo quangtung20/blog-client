@@ -20,7 +20,7 @@ const Home = () => {
             {
               homeBlog.count > 0 &&
               <>
-                <h3>
+                <h3 className='text-info'>
                   <Link to={ `/blogs/${(homeBlog.name).toLowerCase()}` }>
                     { homeBlog.name } <small>({ homeBlog.count })</small>
                   </Link>
@@ -39,7 +39,7 @@ const Home = () => {
             }
 
             {
-              homeBlog.count > 2 && 
+              homeBlog.count > 4 && 
               <Link className="text-end d-block mt-2 mb-3 
               text-decoration-none"
               to={`/blogs/${homeBlog.name}`}>

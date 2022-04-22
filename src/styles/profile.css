@@ -1,7 +1,8 @@
 .profile_info{
   background: #fff;
-  width: 100%;
-  border: 1px solid #ddd;
+  width: 100%;    
+  border: 2px solid rgb(112, 112, 112);
+  border-radius: 0.3em;
   padding: 2.5rem 1.7rem;
 }
 

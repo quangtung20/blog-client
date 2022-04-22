@@ -46,7 +46,7 @@ const OtherInfo: React.FC<IProps> = ({id}) => {
         </span>
       </div>
 
-      <div>Email / Phone number</div>
+      <div>Account</div>
       <span className="text-info">
         {other.account}
       </span>
