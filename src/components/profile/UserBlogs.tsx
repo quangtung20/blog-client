@@ -10,11 +10,9 @@ import CardHoriz from '../cards/CardHoriz'
 import Loading from '../global/Loading'
 import Pagination from '../global/Pagination'
 
-interface ICheck {
-  check: boolean,
-}
 
-const UserBlogs:React.FC<ICheck> = ({check}) => {
+
+const UserBlogs = () => {
   const { blogsUser } = useSelector((state: RootStore) => state)
   const dispatch = useDispatch()
   const user_id = useParams<IParams>().slug
@@ -56,7 +54,7 @@ const UserBlogs:React.FC<ICheck> = ({check}) => {
       <div>
         {
           blogs.map(blog => (
-            <CardHoriz key={blog._id} blog={blog} check={check}/>
+            <CardHoriz key={blog._id} blog={blog}/>
           ))
         }
       </div>

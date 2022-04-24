@@ -9,24 +9,22 @@ import OtherInfo from '../../components/profile/OtherInfo'
 import UserBlogs from '../../components/profile/UserBlogs'
 
 const Profile = () => {
+  const [checkOther,setCheckOther] = useState(false)
   const { slug }: IParams = useParams()
   const { auth } = useSelector((state: RootStore) => state)
-  const [checkOther,setCheckOther] = useState(false)
-  if(auth.user?._id === slug){
-    setCheckOther(true)
-  }
+
   return (
     <div className="row my-3">
       <div className="col-md-5 mb-3">
         {
-          checkOther
+          (auth.user?._id === slug)
           ? <UserInfo />
           : <OtherInfo id={slug} />
         }
       </div>
 
       <div className="col-md-7">
-        <UserBlogs check={checkOther} />
+        <UserBlogs />
       </div>
     </div>
   )

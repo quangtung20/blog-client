@@ -8,10 +8,9 @@ import { IBlog, IParams, IUser, RootStore } from '../../utils/TypeScript'
 
 interface IProps {
   blog: IBlog,
-  check?: boolean,
 }
 
-const CardHoriz: React.FC<IProps> = ({blog,check}) => {
+const CardHoriz: React.FC<IProps> = ({blog}) => {
   const { auth } = useSelector((state: RootStore) => state)
   const { slug } = useParams<IParams>()
   const dispatch = useDispatch()
@@ -70,7 +69,9 @@ const CardHoriz: React.FC<IProps> = ({blog,check}) => {
           <div className="m-3">
               <p className="card-text d-flex justify-content-between">
                 <small className="text-capitalize fw-bold">
-                  by:{check?auth.user?.name:user.name}
+                  by:{
+                    (auth.user?._id === slug?auth.user.name:user.name)
+                  }
                 </small>
 
                 {
