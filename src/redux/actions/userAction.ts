@@ -80,7 +80,6 @@ async (dispatch: Dispatch<IAlertType | IGetOtherInfoType>) => {
     dispatch({ type: ALERT, payload: {loading: true}})
 
     const res = await getAPI(`user/${id}`)
-
     dispatch({
       type: GET_OTHER_INFO,
       payload: res.data

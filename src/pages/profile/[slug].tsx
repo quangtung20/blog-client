@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -11,19 +11,22 @@ import UserBlogs from '../../components/profile/UserBlogs'
 const Profile = () => {
   const { slug }: IParams = useParams()
   const { auth } = useSelector((state: RootStore) => state)
-
+  const [checkOther,setCheckOther] = useState(false)
+  if(auth.user?._id === slug){
+    setCheckOther(true)
+  }
   return (
     <div className="row my-3">
       <div className="col-md-5 mb-3">
         {
-          auth.user?._id === slug
+          checkOther
           ? <UserInfo />
           : <OtherInfo id={slug} />
         }
       </div>
 
       <div className="col-md-7">
-        <UserBlogs />
+        <UserBlogs check={checkOther} />
       </div>
     </div>
   )

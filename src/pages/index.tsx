@@ -6,6 +6,7 @@ import { RootStore } from '../utils/TypeScript'
 
 import CardVert from '../components/cards/CardVert'
 import Loading from '../components/global/Loading'
+import SideBar from '../components/sidebar/SideBar'
 
 const Home = () => {
   const { homeBlogs } = useSelector((state: RootStore) => state)
@@ -13,7 +14,8 @@ const Home = () => {
 
   if(homeBlogs.length === 0) return <Loading />;
   return (
-    <div className="home_page">
+    <div className='row my-3'>
+      <div className="home_page col-md-9">
       {
         homeBlogs.map(homeBlog => (
           <div key={homeBlog._id}>
@@ -34,16 +36,16 @@ const Home = () => {
                     ))
                   }
                 </div>
-
               </>
             }
+             
 
             {
               homeBlog.count > 4 && 
               <Link className="text-end d-block mt-2 mb-3 
-              text-decoration-none"
+              text-decoration-none col-9"
               to={`/blogs/${homeBlog.name}`}>
-                <button className="btn btn-outline-secondary border border-secondary border-2">
+                <button className="btn btn-outline-dark border border-dark border-2">
                   Read more
                 </button>
 
@@ -52,6 +54,10 @@ const Home = () => {
           </div>
         ))
       }
+      </div>
+      <div className='outside_sidebar col-md-3 position-relative'>
+          <SideBar/>
+      </div>
     </div>
   )
 }

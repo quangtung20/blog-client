@@ -7,13 +7,15 @@ import { IBlog, IParams, IUser, RootStore } from '../../utils/TypeScript'
 
 
 interface IProps {
-  blog: IBlog
+  blog: IBlog,
+  check?: boolean,
 }
 
-const CardHoriz: React.FC<IProps> = ({blog}) => {
+const CardHoriz: React.FC<IProps> = ({blog,check}) => {
   const { auth } = useSelector((state: RootStore) => state)
   const { slug } = useParams<IParams>()
   const dispatch = useDispatch()
+  const user = blog.user as IUser
 
   const handleDelete = () => {
     if(!auth.user || !auth.access_token) return;
@@ -27,7 +29,6 @@ const CardHoriz: React.FC<IProps> = ({blog}) => {
       dispatch(deleteBlog(blog, auth.access_token))
     }
   }
-   console.log(auth.user?.name)
   return (
     <div className="card mb-3 border border-secondary border-2" style={{minWidth: "280px"}}>
       <div className="row g-0 p-2">
@@ -68,8 +69,8 @@ const CardHoriz: React.FC<IProps> = ({blog}) => {
           </div>
           <div className="m-3">
               <p className="card-text d-flex justify-content-between">
-                <small className="text-primary text-capitalize fw-bold">
-                  by:{auth.user?.name}
+                <small className="text-capitalize fw-bold">
+                  by:{check?auth.user?.name:user.name}
                 </small>
 
                 {

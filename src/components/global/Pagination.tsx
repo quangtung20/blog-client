@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
+
 interface IProps {
   total: number
   callback: (num: number) => void
 }
 
 const Pagination: React.FC<IProps> = ({total, callback}) => {
+
   const [page, setPage] = useState(1)
 
   const newArr = [...Array(total)].map((_,i) => i + 1)

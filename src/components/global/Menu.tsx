@@ -27,11 +27,11 @@ const Menu = () => {
   }
 
   return (
-    <ul className="navbar-nav ms-auto">
+    <ul className="navbar-nav ms-auto mt-2">
       {
         navLinks.map((link, index) => (
           <li key={index} className={`nav-item ${isActive(link.path)}`}>
-            <Link className="nav-link fw-bold" to={link.path}>{link.label}</Link>
+            <Link className="headera nav-link fw-bold " to={link.path}>{link.label}</Link>
           </li>
         ))
       }
@@ -39,7 +39,7 @@ const Menu = () => {
       {
         auth.user?.role === 'admin' &&
         <li className={`nav-item ${isActive("/category")}`}>
-          <Link to="/category" className="nav-link fw-bold">Category</Link>
+          <Link to="/category" className="headera nav-link fw-bold">Category</Link>
         </li>
       }
       

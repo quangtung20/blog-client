@@ -91,7 +91,10 @@ const CommentList: React.FC<IProps> = ({
             }} />
 
             <div className="d-flex justify-content-between p-2">
-              <button className='btn btn-outline-dark'>
+              <button 
+                className='btn btn-outline-dark'
+                onClick={() => setOnReply(!onReply)}
+              >
                 {onReply ? 'Cancel' :'Reply'}
               </button>
 

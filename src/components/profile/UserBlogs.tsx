@@ -10,7 +10,11 @@ import CardHoriz from '../cards/CardHoriz'
 import Loading from '../global/Loading'
 import Pagination from '../global/Pagination'
 
-const UserBlogs = () => {
+interface ICheck {
+  check: boolean,
+}
+
+const UserBlogs:React.FC<ICheck> = ({check}) => {
   const { blogsUser } = useSelector((state: RootStore) => state)
   const dispatch = useDispatch()
   const user_id = useParams<IParams>().slug
@@ -33,14 +37,13 @@ const UserBlogs = () => {
       setBlogs(data.blogs)
       setTotal(data.total)
       if(data.search) history.push(data.search)
-    }
+  }
   },[user_id, blogsUser, dispatch, search, history])
 
   const handlePagination = (num: number) => {
     const search = `?page=${num}`
     dispatch(getBlogsByUserId(user_id, search))
   }
-
 
   if(!blogs) return <Loading />;
 
@@ -53,7 +56,7 @@ const UserBlogs = () => {
       <div>
         {
           blogs.map(blog => (
-            <CardHoriz key={blog._id} blog={blog} />
+            <CardHoriz key={blog._id} blog={blog} check={check}/>
           ))
         }
       </div>

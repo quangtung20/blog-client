@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0
+}
+
+.sidebar_container {
+    height: 100vh;
+    background-color: #ccc;
+    position: relative
+}
+
+.sidebar {
+    margin-top: -1em !important;
+    /* border-radius: 0.5em; */
+    /* margin-top: 1em; */
+    position: relative;
+    background-color: #fdfdfd;
+    height: 100%;
+    z-index: 10;
+    /* box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1); */
+    border-left: 3px #adadae solid; 
+    border-right: 3px #adadae solid
+}
+
+.sidebar .haha .hahaha{
+    width:40vh
+}
+
+.sidebar ul {
+    padding-left:0;
+}
+
+/* .sidebar li:nth-child(1) {
+    text-align: center;
+    padding: 15px 5px;
+    display: flex;
+    justify-content: center;
+    margin-right: 19px;
+    font-size: 36px;
+    font-weight: 900;
+    font-style: italic;
+    font-family: emoji;
+    padding-top: 30px
+} */
+
+/* .sidebar li:hover:nth-child(1) {
+    padding: 30px 0px;
+    background-color: transparent;
+    color: #000
+} */
+
+.sidebar li {
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.5s;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color:black;
+}
+
+/* .sidebar li span:nth-child(1) {
+    font-size: 20px
+}
+
+.sidebar li span:nth-child(2) {
+    font-size: 16px
+} */
+
+.sidebar li:hover {
+    cursor: pointer;
+    background-color: #000000;
+    padding: 12px;
+    color: #fff;
+    transition: all 0.2s
+}
+
+.sidebar li:hover a  {
+    color: #fff;
+    transition: all 0.2s
+}
+
+.sidebar_container .content {
+    padding-left: 75px
+}

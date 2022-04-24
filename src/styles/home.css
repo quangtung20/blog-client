@@ -1,12 +1,12 @@
 .home_page {
-  width: 100%;
   margin: 1rem 0;
 }
 
 .home_page h3 a {
   text-transform: uppercase;
   text-decoration: none;
-  color: rgb(16, 111, 188);
+  color: black;
+  font-size: italic;
   letter-spacing: 3;
   margin-top: 1rem;
   cursor: pointer;
@@ -21,10 +21,43 @@
 }
 
 .home_blogs{
-  width: 100%;
+  display: grid;
+  grid-gap: 10px;
+  margin-bottom: 15px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   grid-gap: 10px;
-  margin-bottom: 15px;
 }
 
+.outside_sidebar{
+  margin-bottom: -2em;
+}
+
+.headera:hover{
+  color: black;
+  background-color:white;
+  border-radius: 0.2em;
+}
+
+.headera:focus {
+    color: black;
+    background-color:white;
+    border-radius: 0.2em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+small {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight:600;
+  color: black
+}
+
+.headera{
+  color: white
+}
